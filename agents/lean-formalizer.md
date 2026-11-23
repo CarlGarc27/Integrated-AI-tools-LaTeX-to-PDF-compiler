@@ -2,7 +2,8 @@
 
 ## What this project is
 This Lean 4 + mathlib project formalizes and verifies proofs from a research
-document in [your area, e.g. functional analysis / number theory / etc.].
+document in algebraic number theory.
+
 Each task is to translate a statement and its proof, originally written in
 LaTeX (English), into a Lean 4 proof that compiles with no errors and no
 `sorry`.
