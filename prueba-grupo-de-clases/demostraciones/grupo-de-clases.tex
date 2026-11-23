@@ -1,0 +1,245 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{fact}[theorem]{Fact}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\OK}{\mathcal{O}_K}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Nm}{\operatorname{N}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\covol}{\operatorname{covol}}
+
+\title{Finiteness of the class group of a number field}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Setting and notation}\label{sec:setting}
+
+Throughout, $K$ is a number field of degree $n = [K:\Q]$, with ring of
+integers $\OK$ and discriminant $d_K$. Let $\sigma_1, \dots, \sigma_{r_1}$ be
+the real embeddings of $K$ and
+$\sigma_{r_1+1}, \overline{\sigma}_{r_1+1}, \dots, \sigma_{r_1+r_2},
+\overline{\sigma}_{r_1+r_2}$ the complex ones, so that $n = r_1 + 2r_2$. The
+\emph{Minkowski embedding} is
+\[
+  j \colon K \to \R^{r_1} \times \C^{r_2} \cong \R^n, \qquad
+  j(\alpha) = \bigl(\sigma_1(\alpha), \dots, \sigma_{r_1+r_2}(\alpha)\bigr),
+\]
+where $\C \cong \R^2$ via $z \mapsto (\operatorname{Re} z, \operatorname{Im} z)$
+and $\R^n$ carries the Lebesgue measure. For $\alpha \in K$ we write
+$\Nm(\alpha) = \Nm_{K/\Q}(\alpha) = \prod_{i=1}^{n} \tau_i(\alpha)$, the
+product over all $n$ embeddings $\tau_i$ of $K$ into $\C$.
+
+\begin{definition}\label{def:norm}
+For a nonzero ideal $I \subseteq \OK$, its \emph{norm} is
+$\Nm(I) = |\OK / I|$.
+\end{definition}
+
+\begin{definition}\label{def:classgroup}
+A \emph{fractional ideal} of $K$ is a nonzero $\OK$-submodule $\mathfrak{a}$ of
+$K$ such that $\delta\mathfrak{a} \subseteq \OK$ for some nonzero
+$\delta \in \OK$. The \emph{class group} $\Cl_K$ is the group of fractional
+ideals modulo the subgroup of principal fractional ideals $\alpha\OK$,
+$\alpha \in K^\times$. For a fractional ideal $\mathfrak{a}$ we write
+$[\mathfrak{a}]$ for its class.
+\end{definition}
+
+The aim is the following theorem.
+
+\begin{theorem}\label{thm:finite}
+The class group $\Cl_K$ is finite.
+\end{theorem}
+
+\section{Facts used}\label{sec:facts}
+
+\begin{fact}\label{fact:dedekind}
+The ring $\OK$ is a Dedekind domain. Consequently the fractional ideals of $K$
+form an abelian group under multiplication, with identity $\OK$, so that
+$\Cl_K$ in Definition~\ref{def:classgroup} is a group; and for nonzero ideals
+$I, J \subseteq \OK$ we have $J \subseteq I$ if and only if $I \mid J$, that
+is, $J = I I'$ for some ideal $I' \subseteq \OK$ \cite[Ch.~3]{Mar}.
+\end{fact}
+
+\begin{fact}\label{fact:norm}
+The norm of ideals is multiplicative, $\Nm(IJ) = \Nm(I)\Nm(J)$, and for
+nonzero $\alpha \in \OK$ we have $\Nm(\alpha\OK) = |\Nm(\alpha)|$
+\cite[Ch.~3]{Mar}, \cite[Ch.~I, \S6]{Neu}.
+\end{fact}
+
+\begin{fact}\label{fact:covolume}
+For every nonzero ideal $I \subseteq \OK$, $j(I)$ is a lattice of rank $n$ in
+$\R^n$, and
+\[
+  \covol\bigl(j(\OK)\bigr) = 2^{-r_2} \sqrt{|d_K|}, \qquad
+  \covol\bigl(j(I)\bigr) = \Nm(I) \covol\bigl(j(\OK)\bigr).
+\]
+See \cite[Ch.~I, \S5]{Neu}; there the covolumes are computed for a measure
+equal to $2^{r_2}$ times the Lebesgue measure, which accounts for the factor
+$2^{-r_2}$.
+\end{fact}
+
+\begin{fact}[Minkowski's lattice point theorem]\label{fact:minkowski}
+Let $\Lambda \subseteq \R^n$ be a lattice and $X \subseteq \R^n$ a convex,
+centrally symmetric ($x \in X \Rightarrow -x \in X$) set with
+$\vol(X) > 2^n \covol(\Lambda)$. Then $X$ contains a nonzero point of
+$\Lambda$ \cite[Ch.~I, \S4]{Neu}.
+\end{fact}
+
+\begin{lemma}\label{lem:minkowski-compact}
+Let $\Lambda \subseteq \R^n$ be a lattice and $X \subseteq \R^n$ a compact,
+convex, centrally symmetric set with $\vol(X) \geq 2^n \covol(\Lambda)$. Then
+$X$ contains a nonzero point of $\Lambda$.
+\end{lemma}
+
+\begin{proof}
+Since $X$ is nonempty (its volume is positive) and centrally symmetric, it
+contains some $x$ and $-x$, hence $0 = \tfrac12 x + \tfrac12(-x)$ by
+convexity. Consequently $sX \subseteq tX$ for $0 \leq s \leq t$, because
+$sx = \tfrac{s}{t}(tx) + (1 - \tfrac{s}{t}) \cdot 0$.
+
+For $k \geq 1$ let $X_k = (1 + \tfrac1k)X$. It is convex and centrally
+symmetric, and $\vol(X_k) = (1 + \tfrac1k)^n \vol(X) > 2^n \covol(\Lambda)$,
+since $\vol(X) \geq 2^n\covol(\Lambda) > 0$. By Fact~\ref{fact:minkowski}
+there is a nonzero $\lambda_k \in \Lambda \cap X_k$, and
+$X_k \subseteq 2X$ by the previous paragraph. The set $2X$ is bounded and
+$\Lambda$ is discrete, so $\Lambda \cap 2X$ is finite. Hence some nonzero
+$\lambda \in \Lambda$ equals $\lambda_k$ for infinitely many $k$. For each
+such $k$, $\lambda/(1 + \tfrac1k) \in X$; letting $k \to \infty$ along these
+indices and using that $X$ is closed, we get $\lambda \in X$.
+\end{proof}
+
+\begin{lemma}\label{lem:norm-in-ideal}
+For every nonzero ideal $I \subseteq \OK$, the norm $\Nm(I)$ is finite and
+$\Nm(I) \in I$.
+\end{lemma}
+
+\begin{proof}
+By Fact~\ref{fact:covolume}, $j(I)$ and $j(\OK)$ are lattices of rank $n$
+with $j(I) \subseteq j(\OK)$, so the index $|\OK / I|$ is finite. Let
+$m = \Nm(I) = |\OK/I|$. By Lagrange's theorem applied to the additive group
+$\OK/I$ of order $m$, we have $m \cdot (1 + I) = 0$ in $\OK/I$, that is,
+$m \in I$.
+\end{proof}
+
+\section{The Minkowski bound}\label{sec:bound}
+
+Set
+\[
+  M_K = \Bigl(\frac{2}{\pi}\Bigr)^{r_2} \sqrt{|d_K|}.
+\]
+
+\begin{lemma}\label{lem:minkowski-bound}
+Every nonzero ideal $I \subseteq \OK$ contains a nonzero $\alpha$ with
+$|\Nm(\alpha)| \leq M_K \Nm(I)$.
+\end{lemma}
+
+\begin{proof}
+Fix real numbers $c_1, \dots, c_{r_1+r_2} > 0$ with
+\begin{equation}\label{eq:product}
+  \prod_{i=1}^{r_1} c_i \prod_{i=r_1+1}^{r_1+r_2} c_i^2 = M_K \Nm(I),
+\end{equation}
+and let
+\[
+  X_c = \bigl\{ (y_1, \dots, y_{r_1+r_2}) \in \R^{r_1} \times \C^{r_2} :
+  |y_i| \leq c_i \text{ for all } i \bigr\}.
+\]
+This is a product of closed intervals $[-c_i, c_i]$ and closed discs of radius
+$c_i$; hence it is compact, convex and centrally symmetric, and by Fubini's
+theorem
+\[
+  \vol(X_c) = \prod_{i=1}^{r_1} 2c_i \prod_{i=r_1+1}^{r_1+r_2} \pi c_i^2
+  = 2^{r_1} \pi^{r_2} M_K \Nm(I)
+  = 2^{r_1 + r_2} \sqrt{|d_K|}\, \Nm(I),
+\]
+using \eqref{eq:product} and the definition of $M_K$. On the other hand, by
+Fact~\ref{fact:covolume} and $n = r_1 + 2r_2$,
+\[
+  2^n \covol\bigl(j(I)\bigr) = 2^{n - r_2} \sqrt{|d_K|}\, \Nm(I)
+  = 2^{r_1 + r_2} \sqrt{|d_K|}\, \Nm(I).
+\]
+So $\vol(X_c) = 2^n \covol(j(I))$, and Lemma~\ref{lem:minkowski-compact}
+applied to
+$\Lambda = j(I)$ and $X = X_c$ gives a nonzero $\alpha \in I$ with
+$j(\alpha) \in X_c$, that is, $|\sigma_i(\alpha)| \leq c_i$ for all $i$. Each
+complex embedding occurs in $\Nm(\alpha)$ together with its conjugate, and
+$|\overline{\sigma}_i(\alpha)| = |\sigma_i(\alpha)|$, so
+\[
+  |\Nm(\alpha)|
+  = \prod_{i=1}^{r_1} |\sigma_i(\alpha)|
+    \prod_{i=r_1+1}^{r_1+r_2} |\sigma_i(\alpha)|^2
+  \leq \prod_{i=1}^{r_1} c_i \prod_{i=r_1+1}^{r_1+r_2} c_i^2
+  = M_K \Nm(I)
+\]
+by \eqref{eq:product}.
+\end{proof}
+
+\begin{proposition}\label{prop:small-ideal}
+Every class $c \in \Cl_K$ contains an ideal $J \subseteq \OK$ with
+$\Nm(J) \leq M_K$.
+\end{proposition}
+
+\begin{proof}
+Let $c \in \Cl_K$ and write $c^{-1} = [\mathfrak{b}]$ for a fractional ideal
+$\mathfrak{b}$. By Definition~\ref{def:classgroup} there is a nonzero
+$\delta \in \OK$ with $I = \delta\mathfrak{b} \subseteq \OK$, and
+$[I] = [\mathfrak{b}] = c^{-1}$ because $\delta\OK$ is principal. By
+Lemma~\ref{lem:minkowski-bound} there is a nonzero $\alpha \in I$ with
+$|\Nm(\alpha)| \leq M_K \Nm(I)$. Since $\alpha\OK \subseteq I$,
+Fact~\ref{fact:dedekind} gives $\alpha\OK = IJ$ for an ideal
+$J \subseteq \OK$. By Fact~\ref{fact:norm},
+\[
+  \Nm(J) = \frac{\Nm(\alpha\OK)}{\Nm(I)} = \frac{|\Nm(\alpha)|}{\Nm(I)}
+  \leq M_K.
+\]
+Finally, $\alpha\OK = IJ$ is principal, so $[I][J] = 1$ in $\Cl_K$ and
+$[J] = [I]^{-1} = c$.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:finite}}\label{sec:proof}
+
+\begin{lemma}\label{lem:finitely-many}
+For every real number $B > 0$ there are only finitely many ideals
+$J \subseteq \OK$ with $\Nm(J) \leq B$.
+\end{lemma}
+
+\begin{proof}
+Let $J$ be such an ideal and $m = \Nm(J)$, a positive integer with
+$m \leq B$. By Lemma~\ref{lem:norm-in-ideal}, $m \in J$, so
+$m\OK \subseteq J$. By the correspondence theorem, the ideals of $\OK$
+containing $m\OK$ are in bijection with the ideals of $\OK / m\OK$. By
+Fact~\ref{fact:covolume}, $\OK \cong j(\OK) \cong \Z^n$ as abelian groups, so
+$|\OK / m\OK| = m^n$ is finite, and $\OK/m\OK$ has finitely many ideals.
+Hence, for each of the finitely many integers $1 \leq m \leq B$, there are
+finitely many ideals $J$ with $\Nm(J) = m$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:finite}]
+By Proposition~\ref{prop:small-ideal}, every class in $\Cl_K$ contains one of
+the ideals $J \subseteq \OK$ with $\Nm(J) \leq M_K$, and by
+Lemma~\ref{lem:finitely-many} there are finitely many such ideals. Since
+distinct classes are disjoint, the map sending each class to one such ideal
+in it is injective, so $\Cl_K$ is finite.
+\end{proof}
+
+\begin{thebibliography}{9}
+\bibitem{Mar} D.~A. Marcus, \emph{Number Fields}, Universitext,
+  Springer-Verlag, New York, 1977.
+\bibitem{Neu} J.~Neukirch, \emph{Algebraic Number Theory}, Grundlehren der
+  mathematischen Wissenschaften 322, Springer-Verlag, Berlin, 1999.
+\end{thebibliography}
+
+\end{document}
